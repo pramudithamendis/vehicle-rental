@@ -1,5 +1,6 @@
 import express from "express";
 import { chatModel } from "../models/chatModel.js";
+import { replyModel } from "../models/replyModel.js";
 
 const router = express.Router();
 
@@ -64,6 +65,7 @@ router.get('/getchat/:id', async (request, response) => {
 })
 
 
+
 router.put('/edit/:id', async (request, response) => {
 
     try {
@@ -92,5 +94,42 @@ router.put('/edit/:id', async (request, response) => {
         
     }
 })
+
+
+router.post('/create/admin/', async (request,response)=>{
+    try {
+
+        const newChat = {
+            title: request.body.title,
+            issueid: request.body.issueid
+        }
+
+        const chat = await replyModel.create(newChat);
+        return response.status(201).send(chat);
+    } catch (error) {
+        
+    }
+})
+
+router.get('/getchat/:id/reply', async (request, response) => {
+ 
+    try {
+        
+        //
+        const {id} = request.params;
+
+        //using id, we must find rid
+        const forrid = await replyModel.findOne({ issueid: id }).exec();
+
+        const rid = forrid._id
+
+        const as = await replyModel.findById(rid)
+        return response.status(200).json(as);
+
+    } catch (error) {
+     
+    }
+})
+
 
 export default router;

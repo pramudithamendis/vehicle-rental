@@ -13,13 +13,33 @@ const AChat = () => {
 
   const [loading, setL] = useState(false)
   const [s, setS] = useState({});
+  const [r, setR] = useState({});
   const { id } = useParams();
+
+  useEffect(() => {
+    setL(true);
+    
+    axios.get(`http://localhost:5555/chat/getchat/${id}/reply`)
+      .then((response) => {
+        // console.log(response);
+        
+        setR(response.data);
+        setL(false)
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("no hi");
+        setL(false);
+      })
+  }, [])
+  
 
   useEffect(() => {
     setL(true);
     axios.get(`http://localhost:5555/chat/getchat/${id}`)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
+        
         setS(response.data);
         setL(false)
       })
@@ -28,6 +48,8 @@ const AChat = () => {
         setL(false);
       })
   }, [])
+
+
   return (
     <div className='AChat_parent'>
       <div className='AChat_parent_leftpanel phonescreen'><BackButton /></div>
@@ -46,7 +68,11 @@ const AChat = () => {
 
 
       </div>
-      {/* <div className='rightpanel phonescreen'>Side</div> */}
+      <div>
+      {r.title}<br/>
+      
+      </div>
+      
     </div>
 
 
