@@ -111,5 +111,25 @@ router.post('/create/admin/', async (request,response)=>{
     }
 })
 
+router.get('/getchat/:id/reply', async (request, response) => {
+ 
+    try {
+        
+        //
+        const {id} = request.params;
+
+        //using id, we must find rid
+        const forrid = await replyModel.findOne({ issueid: id }).exec();
+
+        const rid = forrid._id
+
+        const as = await replyModel.findById(rid)
+        return response.status(200).json(as);
+
+    } catch (error) {
+     
+    }
+})
+
 
 export default router;
