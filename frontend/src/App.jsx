@@ -7,6 +7,7 @@ import AChat from './pages/AChat.jsx'
 import Edit from './pages/Edit.jsx'
 import ChatsForAdmin from './pages/ChatsForAdmin.jsx'
 import AChatForAdmin from './pages/AChatForAdmin.jsx'
+import CreateForAdmin from './pages/CreateForAdmin.jsx'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
       <Route path='/chat/edit/:id' element={<Edit />} />
       <Route path='/chat/chats/admin' element={<ChatsForAdmin />} />
       <Route path='/chat/getchat/:id/admin' element={<AChatForAdmin />} />
+      <Route path='/chat/create/admin' element={<CreateForAdmin />} />
     </Routes>
   )
 }

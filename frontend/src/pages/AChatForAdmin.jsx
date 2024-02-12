@@ -42,7 +42,9 @@ const AChatForAdmin = () => {
 
       </div>
       {/* <div className='rightpanel phonescreen'>Side</div> */}
-      <div><span ><br /><input type="text" /></span></div>
+      <Link to={`/chat/create/admin`}>
+                              Reply
+                                </Link>
     </div>
     
 

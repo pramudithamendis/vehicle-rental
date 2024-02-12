@@ -1,5 +1,6 @@
 import express from "express";
 import { chatModel } from "../models/chatModel.js";
+import { replyModel } from "../models/replyModel.js";
 
 const router = express.Router();
 
@@ -93,5 +94,21 @@ router.put('/edit/:id', async (request, response) => {
         
     }
 })
+
+
+router.post('/create/admin', async (request,response)=>{
+    try {
+
+        const newChat = {
+            title: request.body.title
+        }
+
+        const chat = await replyModel.create(newChat);
+        return response.status(201).send(chat);
+    } catch (error) {
+        
+    }
+})
+
 
 export default router;
