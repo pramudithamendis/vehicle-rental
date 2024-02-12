@@ -5,6 +5,7 @@ import Chats from './pages/Chats.jsx'
 import Delete from './pages/Delete.jsx'
 import AChat from './pages/AChat.jsx'
 import Edit from './pages/Edit.jsx'
+import ChatsForAdmin from './pages/ChatsForAdmin.jsx'
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <Route path='/chat/delete/:id' element={<Delete />} />
       <Route path='/chat/getchat/:id' element={<AChat />} />
       <Route path='/chat/edit/:id' element={<Edit />} />
+      <Route path='/chat/chats/admin' element={<ChatsForAdmin />} />
     </Routes>
   )
 }
