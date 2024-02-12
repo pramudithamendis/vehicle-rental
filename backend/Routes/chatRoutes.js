@@ -96,7 +96,7 @@ router.put('/edit/:id', async (request, response) => {
 })
 
 
-router.post('/create/admin', async (request,response)=>{
+router.post('/create/admin/', async (request,response)=>{
     try {
 
         const newChat = {

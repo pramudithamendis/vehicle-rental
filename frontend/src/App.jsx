@@ -19,7 +19,7 @@ const App = () => {
       <Route path='/chat/edit/:id' element={<Edit />} />
       <Route path='/chat/chats/admin' element={<ChatsForAdmin />} />
       <Route path='/chat/getchat/:id/admin' element={<AChatForAdmin />} />
-      <Route path='/chat/create/admin' element={<CreateForAdmin />} />
+      <Route path='/chat/create/admin/:id' element={<CreateForAdmin />} />
     </Routes>
   )
 }
