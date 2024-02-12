@@ -100,7 +100,8 @@ router.post('/create/admin', async (request,response)=>{
     try {
 
         const newChat = {
-            title: request.body.title
+            title: request.body.title,
+            issueid: request.body.issueid
         }
 
         const chat = await replyModel.create(newChat);

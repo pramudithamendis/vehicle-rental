@@ -16,7 +16,7 @@ const CreateForAdmin = () => {
       title
     };
     setL(true);
-    axios.post('http://localhost:5555/chat/create/admin', {"title": "done?"}) //data)
+    axios.post('http://localhost:5555/chat/create/admin', {"title": "done?", "issueid": "asdasdasd"}) //data)
       .then((response) => {
         console.log(response);
         navigate('/chat/chats');
