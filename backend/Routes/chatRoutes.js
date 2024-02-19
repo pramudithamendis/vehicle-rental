@@ -118,13 +118,56 @@ router.get('/getchat/:id/reply', async (request, response) => {
         //
         const {id} = request.params;
 
-        //using id, we must find rid
-        const forrid = await replyModel.findOne({ issueid: id }).exec();
+        //findAll part comes here.(see bottom for it)
+        ////////////////////////////
 
-        const rid = forrid._id
+        
+        const forrid2 = []
 
-        const as = await replyModel.findById(rid)
-        return response.status(200).json(as);
+        ////taking the _id of the replies that has {issueid: id}, into an array
+
+        const rids = [];
+
+
+        for(i in forrid2){
+            var rid = i._id
+            rids.push(rid)
+        }
+        
+        
+        
+        
+        var rid = "65d35a1a30d7e9424582e9a6"
+        var rid2 = "65c9eb55c7c7159970ff2842"
+        var rid3 = "65d3742eb66c95f04b2cf1c3"
+
+        rids.push(rid)
+        rids.push(rid2)
+        rids.push(rid3)
+
+         
+        
+        const as2 = []
+        
+        let size = rids.length
+
+        for(let k=0; k<size; k++){
+        const as = await replyModel.findById(rids[k])
+            as2.push(as)
+        
+        }
+
+        
+
+    // const users = await replyModel.findAll({
+    //     where: {
+    //       issueid: id,
+    //     },
+    //   });
+
+    //   console.log(users)
+
+        return response.status(200).json(as2);
 
     } catch (error) {
      

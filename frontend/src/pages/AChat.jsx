@@ -13,7 +13,7 @@ const AChat = () => {
 
   const [loading, setL] = useState(false)
   const [s, setS] = useState({});
-  const [r, setR] = useState({});
+  const [r, setR] = useState([]);
   const { id } = useParams();
   const [replyloading, setReply] = useState(true)
 
@@ -23,8 +23,10 @@ const AChat = () => {
     axios.get(`http://localhost:5555/chat/getchat/${id}/reply`)
       .then((response) => {
         // console.log(response);
+
         
         setR(response.data);
+        
         setL(false)
         // setReply(false)
         setReply(false)
@@ -76,15 +78,24 @@ const AChat = () => {
 
       </div>
       {replyloading ? (<Spinner />) : (
-      <div className='AChat_parent_right_panel'>
-        <div className="AChat_parent_right_panel_title">
-        {r.title}<br/>
+
+        <div>
+          
+          {r[0]._id} <br/>
+          {r[1]._id}<br/>
+          {r[2]._id}
         </div>
-        </div>
+      // r.map((i) => (
+      //   <div className='AChat_parent_right_panel' key={i._id}>
+      //   <div className="AChat_parent_right_panel_title">
+      //   {i}<br/>
+      //   </div>
+      //   </div>
+      // )
+      // )
       )
-      }
       
-      
+}
       
       
       
