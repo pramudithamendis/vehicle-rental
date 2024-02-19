@@ -15,6 +15,7 @@ const AChat = () => {
   const [s, setS] = useState({});
   const [r, setR] = useState({});
   const { id } = useParams();
+  const [replyloading, setReply] = useState(true)
 
   useEffect(() => {
     setL(true);
@@ -25,11 +26,15 @@ const AChat = () => {
         
         setR(response.data);
         setL(false)
+        // setReply(false)
+        setReply(false)
+        
       })
       .catch((error) => {
         console.log(error);
-        console.log("no hi");
+        
         setL(false);
+        setReply(true)
       })
   }, [])
   
@@ -42,10 +47,12 @@ const AChat = () => {
         
         setS(response.data);
         setL(false)
+        
       })
       .catch((error) => {
         console.log(error);
         setL(false);
+        
       })
   }, [])
 
@@ -68,10 +75,18 @@ const AChat = () => {
 
 
       </div>
-      <div>
-      {r.title}<br/>
+      {replyloading ? (<Spinner />) : (
+      <div className='AChat_parent_right_panel'>
+        <div className="AChat_parent_right_panel_title">
+        {r.title}<br/>
+        </div>
+        </div>
+      )
+      }
       
-      </div>
+      
+      
+      
       
     </div>
 
