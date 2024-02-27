@@ -120,33 +120,45 @@ router.get('/getchat/:id/reply', async (request, response) => {
 
         //findAll part comes here.(see bottom for it)
         ////////////////////////////
+        //Method 1
+        // const allreplies = await replyModel.findAll({
+        //     where: {
+        //       issueid: id,
+        //     },
+        //   });
+
+        //Method 2
+        const allreplies = await replyModel.find({});
+   
+        // console.log(allreplies);
+        const rids = []
 
         
+        // console.log(allreplies[0].issueid)
+        // console.log(allreplies.length);
+        
+        for (let i = 0; i < allreplies.length; i++) {
+            if(allreplies[i].issueid==id){
+                rids.push(allreplies[i]._id)
+            }
+            else{
+                continue;
+            }
+        }
+
+        //
+        //for null ones
+        
+
+
+    
         const forrid2 = []
 
         ////taking the _id of the replies that has {issueid: id}, into an array
 
-        const rids = [];
 
 
-        for(i in forrid2){
-            var rid = i._id
-            rids.push(rid)
-        }
-        
-        
-        
-        
-        var rid = "65d35a1a30d7e9424582e9a6"
-        var rid2 = "65c9eb55c7c7159970ff2842"
-        var rid3 = "65d3742eb66c95f04b2cf1c3"
 
-        rids.push(rid)
-        rids.push(rid2)
-        rids.push(rid3)
-
-         
-        
         const as2 = []
         
         let size = rids.length
@@ -156,14 +168,19 @@ router.get('/getchat/:id/reply', async (request, response) => {
             as2.push(as)
         
         }
-
+        // console.log(as2[0])
+        if(as2.length==0){
+            as2.push(
+                {
+                    _id: new ObjectId(' '),
+       
+                  }
+            )
+        }
+        
         
 
-    // const users = await replyModel.findAll({
-    //     where: {
-    //       issueid: id,
-    //     },
-    //   });
+
 
     //   console.log(users)
 

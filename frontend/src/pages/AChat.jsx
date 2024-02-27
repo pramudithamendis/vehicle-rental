@@ -80,10 +80,21 @@ const AChat = () => {
       {replyloading ? (<Spinner />) : (
 
         <div>
+
+          {/* {r.length} */}
+         <div>     
           
-          {r[0]._id} <br/>
-          {r[1]._id}<br/>
-          {r[2]._id}
+         {r.map(function(r, i){
+        return <div>
+          {r.title}
+        </div>;
+        })}
+
+   
+
+         </div>
+          
+
         </div>
       // r.map((i) => (
       //   <div className='AChat_parent_right_panel' key={i._id}>
