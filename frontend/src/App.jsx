@@ -9,10 +9,12 @@ import ChatsForAdmin from './pages/ChatsForAdmin.jsx'
 import AChatForAdmin from './pages/AChatForAdmin.jsx'
 import CreateForAdmin from './pages/CreateForAdmin.jsx'
 import ChatUser from './pages/ChatUser.jsx'
+import Home from './pages/Home.jsx'
 
 const App = () => {
   return (
     <Routes>
+      <Route path='/home' element={<Home />} />
       <Route path='/chat/create' element={<Create />} />
       <Route path='/chat/chats' element={<Chats />} />
       <Route path='/chat/delete/:id' element={<Delete />} />
