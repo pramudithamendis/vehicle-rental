@@ -20,7 +20,7 @@ const ChatUser = () => {
 	    axios.post('http://localhost:5555/user/create',data)
         .then((response)=>{
             console.log(response);
-            navigate('/user/create');
+            navigate('/home');
         })
         .catch((error)=>{
             // setL(false);
