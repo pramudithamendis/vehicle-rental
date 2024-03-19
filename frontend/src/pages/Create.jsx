@@ -4,6 +4,8 @@ import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 import './Create.css'
 import BackButton from '../components/BackButton'
+import { useLocation } from 'react-router-dom'
+
 
 const Create = () => {
   const [title, setTitle] = useState('');
@@ -12,6 +14,9 @@ const Create = () => {
 
   const [loading, setL] = useState(false);
   const navigate = useNavigate();
+
+  const location = useLocation()
+  const { user } = location.state
 
   const CreateF = () => {
     const data = {
@@ -35,7 +40,7 @@ const Create = () => {
       <div className='Create_parent_leftpanel phonescreen'><BackButton /></div>
       <div className="Create_parent_middlepanel">
         
-
+        <div>{user}</div>
           <input
             className='Create_parent_middlepanel_title'
             type='text' placeholder='Title of the issue'

@@ -37,13 +37,14 @@ const Chats = () => {
                 
                 <div className='Chats_parent'>
                     <div>Hi user {location.state.name}<br/></div>    
-                    <Link className='edit' to={`/chat/create`}>
+                    <Link className='edit' to={`/chat/create`} state={{ user: location.state.name }}>
                     <div className='Chats_parent_leftpanel phonescreen'>
                         <div>
                             <AiOutlineEdit className='' />
 
                         </div>
                         <div>Create</div>
+                        
                     </div>
                 </Link>
                 
