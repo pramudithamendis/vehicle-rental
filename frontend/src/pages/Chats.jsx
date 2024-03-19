@@ -7,12 +7,15 @@ import { Link } from 'react-router-dom'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsInfoCircle } from 'react-icons/bs'
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
+import {useLocation} from 'react-router-dom';
 import './Chats.css'
 
 
 const Chats = () => {
     const [chats, setS] = useState([]);
     const [loading, setL] = useState(false)
+    
+    const location = useLocation();
 
     useEffect(() => {
         setL(true);
@@ -33,6 +36,7 @@ const Chats = () => {
 
                 
                 <div className='Chats_parent'>
+                    <div>Hi user {location.state.name}<br/></div>    
                     <Link className='edit' to={`/chat/create`}>
                     <div className='Chats_parent_leftpanel phonescreen'>
                         <div>

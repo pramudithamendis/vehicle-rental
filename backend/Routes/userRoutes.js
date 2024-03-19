@@ -31,7 +31,8 @@ router.post('/login', async (request,response)=>{
     .then(user => {
         if(user){
             if(user.password === password){
-                response.json("Success")
+                response.json({success: "Success", user: user.idN})
+                
             }else{
                 response.json("Incorrect login details")
             }

@@ -20,8 +20,10 @@ const ChatUserLogin = () => {
 	    axios.post('http://localhost:5555/user/login',data)
         .then((response)=>{
             console.log(response);
-            if(response.data === "Success"){
-                navigate('/chat/chats')
+            if(response.data.success === "Success"){
+                
+                navigate('/chat/chats',{state:{id:1,name: response.data.user}})
+                
             }
         })
         .catch((error)=>{
