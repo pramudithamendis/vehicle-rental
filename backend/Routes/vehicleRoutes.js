@@ -36,7 +36,7 @@ router.post('/validateVehicle', async (request,response)=>{
         if(vehiclenumber){
                 response.json({success: "Vehicle number is valid", vehiclenumber: vehiclenumber})          
         }else{
-            response.json("vehiclenumber is invalid")
+            response.json("Vehicle number is invalid.")
         }
     })
 })

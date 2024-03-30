@@ -17,7 +17,7 @@ const Create = () => {
 
   const [user, setU] = useState(localStorage.getItem('user'));
   const [vehicleisthere, setSuccessofVehicle] = useState(false);
-  
+  const [errorMessage, setErrorMessage] = useState('')
 
   const CreateF0 = () => {
     
@@ -42,6 +42,9 @@ const Create = () => {
                           setSuccessofVehicle(true)
                            CreateF2()
                           
+                      }
+                      else{
+                        setErrorMessage(response.data)
                       }
                   })
                   .catch((error)=>{
@@ -111,6 +114,9 @@ const Create = () => {
           />
            <button className='Create_parent_middlepanel_button' onClick={CreateF0}
       >Save</button>
+      <div>
+          {errorMessage}
+        </div>
         
       </div>
 
