@@ -17,7 +17,8 @@ router.post('/create', async (request,response)=>{
         const newChat = {
             title: request.body.title,
             vehicle: request.body.vehicle,
-            issue: request.body.issue
+            issue: request.body.issue,
+            user: request.body.user,
         }
 
         const chat = await chatModel.create(newChat);

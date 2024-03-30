@@ -22,7 +22,8 @@ const Create = () => {
     const data = {
       title,
       vehicle,
-      issue
+      issue,
+      user
     };
     setL(true);
     axios.post('http://localhost:5555/chat/create', data)
