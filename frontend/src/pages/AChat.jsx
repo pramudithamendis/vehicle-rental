@@ -96,14 +96,7 @@ const AChat = () => {
           
 
         </div>
-      // r.map((i) => (
-      //   <div className='AChat_parent_right_panel' key={i._id}>
-      //   <div className="AChat_parent_right_panel_title">
-      //   {i}<br/>
-      //   </div>
-      //   </div>
-      // )
-      // )
+
       )
       
 }
