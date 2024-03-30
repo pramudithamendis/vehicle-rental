@@ -11,6 +11,7 @@ import CreateForAdmin from './pages/CreateForAdmin.jsx'
 import ChatUser from './pages/ChatUser.jsx'
 import Home from './pages/Home.jsx'
 import ChatUserLogin from './pages/ChatUserLogin.jsx'
+import CreateVehicle from './pages/CreateVehicle.jsx'
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <Route path='/chat/create/admin/:id' element={<CreateForAdmin />} />
       <Route path='/user/create' element={<ChatUser />} />
       <Route path='/user/signin' element={<ChatUserLogin />} />
+      <Route path='/vehicle/vehiclecreate' element={<CreateVehicle />}/>
     </Routes>
   )
 }
