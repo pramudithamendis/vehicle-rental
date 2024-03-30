@@ -17,18 +17,33 @@ const Chats = () => {
     
     const [user, setU] = useState(localStorage.getItem('user'));
 
+    const [chatsloading, setChats] = useState(true)
+
+
     useEffect(() => {
         setL(true);
-        
-        axios.get('http://localhost:5555/chat/chats')
+
+        axios.get(`http://localhost:5555/chat/chats/${user}`)
             .then((response) => {
                 setS(response.data);
-                console.log(response);
+                
                 setL(false)
+                
+                if(response.data[0].title =="hi"){
+                    setChats(true)    
+                }
+                else{
+                    setChats(false)   
+                    
+                }
+                
+                
             })
             .catch((error) => {
                 console.log(error);
-                setL(false);
+                setL(true);
+                setChats(false)
+                
             })
     }, [])
     return (
@@ -49,7 +64,36 @@ const Chats = () => {
                     </div>
                 </Link>
                 
-                    {chats.map((s, index) => (
+                {chatsloading ? (<div></div>) : (
+                <div>
+  
+                {chats.map(function(s, index){
+                return <div>
+                 <div className='Chats_parent_middlepanel' key={s._id}>
+                        <>
+                            <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
+                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
+
+                            <div className='Chats_parent_middlepanel_Operations'>
+                                <Link className='edit' to={`/chat/edit/${s._id}`}>
+                                    <AiOutlineEdit className='' />
+                                </Link>
+                                <Link className='info' to={`/chat/getchat/${s._id}`}>
+                                    <BsInfoCircle className='' />
+                                </Link>
+                                <Link className='delete' to={`/chat/delete/${s._id}`}>
+                                    <MdOutlineDelete className='' />
+                                </Link>
+
+                            </div>
+                        </>
+                    </div>
+                </div>;
+                })}
+     
+                </div>
+                )}
+                    {/* {chats.map((s, index) => (
                     <div className='Chats_parent_middlepanel' key={s._id}>
                         <>
                             <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
@@ -69,7 +113,7 @@ const Chats = () => {
                             </div>
                         </>
                     </div>
-                ))}
+                ))} */}
             {/* <div className='rightpanel phonescreen'>Side</div> */}
         </div>
 

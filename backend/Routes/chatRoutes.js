@@ -28,11 +28,79 @@ router.post('/create', async (request,response)=>{
     }
 })
 
-
 router.get('/chats', async (request,response)=>{
     try {
         const all = await chatModel.find({});
         return response.status(200).json(all);
+        
+    } catch (error) {
+        
+    }
+})
+
+router.get('/chats/:user', async (request,response)=>{
+    try {
+        
+        const {user} = request.params;
+
+        const allchats = await chatModel.find({});
+        
+        
+
+        const chatids = []
+
+        for (let i = 0; i < allchats.length; i++) {
+            if(allchats[i].user == user){
+                chatids.push(allchats[i]._id)
+            }
+            else{
+                continue;
+            }
+        }
+
+        // console.log(chatids)
+
+
+        const forrid2 = []
+
+       
+   
+        const as2 = []
+
+        if(chatids.length != 0){
+            
+            let size = chatids.length
+
+            for(let k=0; k<size; k++){
+                const as = await chatModel.findById(chatids[k])
+
+                    if(k==1){
+                    console.log(as)
+                    }
+                as2.push(as)
+            }
+            console.log(as2)
+        }else{
+            
+            as2.push(
+                
+                {
+                    "_id": "",
+                    "title": "hi",
+                    "vehicle": "",
+                    "issue": "",
+                    "user": " ",
+                    "createdAt": "",
+                    "updatedAt": "",
+                    "__v": 0
+                }
+                
+            )
+            console.log(as2)
+        }
+    
+
+        return response.status(200).json(as2);
         
     } catch (error) {
         

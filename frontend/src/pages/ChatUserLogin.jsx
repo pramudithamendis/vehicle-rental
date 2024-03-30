@@ -4,8 +4,8 @@ import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 
 const ChatUserLogin = () => {
-    const [loading, setL] = useState(false)
-    const [idN, setidN] = useState();
+    // const [loading, setL] = useState(false)
+    const [idN, setidN] = useState('');
     const [password, setpassword] = useState('');
     const navigate = useNavigate();
 
