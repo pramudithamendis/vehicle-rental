@@ -9,6 +9,7 @@ const ChatUserLogin = () => {
     const [password, setpassword] = useState('');
     const navigate = useNavigate();
 
+    const [errorMessage, setErrorMessage] = useState('')
     const LoginF = () => {
         // setL(true);
         
@@ -25,6 +26,9 @@ const ChatUserLogin = () => {
                 navigate('/chat/chats')
                 localStorage.setItem('user', response.data.user);
                 
+            }
+            else{
+                setErrorMessage(response.data)
             }
         })
         .catch((error)=>{
@@ -54,6 +58,9 @@ const ChatUserLogin = () => {
 
         <button className='p-2 bg-sky-300 m-' onClick={LoginF}
         >Save</button>
+        <div>
+          {errorMessage}
+        </div>
     </div>
   )
 }
