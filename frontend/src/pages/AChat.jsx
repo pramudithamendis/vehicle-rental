@@ -16,6 +16,7 @@ const AChat = () => {
   const [r, setR] = useState([]);
   const { id } = useParams();
   const [replyloading, setReply] = useState(true)
+  const [editable, setEditable] = useState(true)
 
   useEffect(() => {
     setL(true);
@@ -30,6 +31,8 @@ const AChat = () => {
         setL(false)
         // setReply(false)
         setReply(false)
+
+        setEditable(false)
         
       })
       .catch((error) => {
@@ -37,6 +40,7 @@ const AChat = () => {
         
         setL(false);
         setReply(true)
+        setEditable(true)
       })
   }, [])
   
@@ -67,9 +71,15 @@ const AChat = () => {
         <div className='AChat_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div><hr className='AChat_parent_middlepanel_vehicle_hr' />
         <div className='AChat_parent_middlepanel_issue'>Issue: {s.issue}</div>
         <div className='AChat_parent_middlepanel_operations'>
-        <Link className='edit' to={`/chat/edit/${s._id}`}>
+
+        {editable ? (
+          <Link className='edit' to={`/chat/edit/${s._id}`}>
           <AiOutlineEdit className='' />
         </Link>
+        ) : (
+          <div>Cannot-edit | </div>
+        )}
+        
         <Link className='delete' to={`/chat/delete/${s._id}`}>
           <MdOutlineDelete className='' />
         </Link>
