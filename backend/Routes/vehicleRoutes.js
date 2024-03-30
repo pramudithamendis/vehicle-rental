@@ -28,4 +28,17 @@ router.post('/create', async (request,response)=>{
 })
 
 
+router.post('/validateVehicle', async (request,response)=>{
+    const {vehiclenumber} = request.body;
+
+    vehicleModel.findOne({vehiclenumber: vehiclenumber})
+    .then(vehiclenumber => {
+        if(vehiclenumber){
+                response.json({success: "Vehicle number is valid", vehiclenumber: vehiclenumber})          
+        }else{
+            response.json("vehiclenumber is invalid")
+        }
+    })
+})
+
 export default router;

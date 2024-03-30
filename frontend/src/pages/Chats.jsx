@@ -62,17 +62,14 @@ const Chats = () => {
                         <div>Create</div>
                         
                     </div>
-                </Link>
-                
+                    </Link>
                 {chatsloading ? (<div></div>) : (
                 <div>
-  
                 {chats.map(function(s, index){
-                return <div>
-                 <div className='Chats_parent_middlepanel' key={s._id}>
+                return <div className='Chats_parent_middlepanel' key={s._id}>
                         <>
                             <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
-                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
+                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle Number: {s.vehicle}</div>
 
                             <div className='Chats_parent_middlepanel_Operations'>
                                 <Link className='edit' to={`/chat/edit/${s._id}`}>
@@ -88,92 +85,17 @@ const Chats = () => {
                             </div>
                         </>
                     </div>
-                </div>;
+               
                 })}
-     
-                </div>
+      </div>
+                
                 )}
-                    {/* {chats.map((s, index) => (
-                    <div className='Chats_parent_middlepanel' key={s._id}>
-                        <>
-                            <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
-                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
-
-                            <div className='Chats_parent_middlepanel_Operations'>
-                                <Link className='edit' to={`/chat/edit/${s._id}`}>
-                                    <AiOutlineEdit className='' />
-                                </Link>
-                                <Link className='info' to={`/chat/getchat/${s._id}`}>
-                                    <BsInfoCircle className='' />
-                                </Link>
-                                <Link className='delete' to={`/chat/delete/${s._id}`}>
-                                    <MdOutlineDelete className='' />
-                                </Link>
-
-                            </div>
-                        </>
-                    </div>
-                ))} */}
-            {/* <div className='rightpanel phonescreen'>Side</div> */}
+                  
         </div>
 
 
 
-        //     <table >
-
-
-
-        //         <tr>
-        //           <th className='thead'>No</th>
-        //           <th className='thead'>Title</th>
-        //           <th className='thead'>Vehicle</th>
-        //           <th className='thead'>issue</th>
-
-        //           <th className=''>Operations</th>
-        //           <th className=''><Link to={'/chat/create'}>Create</Link></th>
-        //         </tr>
-
-
-
-
-        //     <div className="tbody">
-        //      <tbody>
-        //      {chats.map((s, index) => (
-        //          <tr key={s._id} className='h-8'>
-        //              <td className=''>
-        //                  {index + 1}
-        //              </td>
-        //              <td className=''>
-        //                  {s.title}
-        //              </td>
-        //              <td className=''>
-        //                  {s.vehicle}
-        //              </td>
-        //              <td className=''>
-        //                  {s.issue}
-        //              </td>
-
-        //              <td className=''>
-        //                  <div className=''>
-        //                  <Link to={`/chat/edit/${s._id}`}>
-        //                        <AiOutlineEdit className='' />
-        //                    </Link> 
-        //                  <Link to={`/chat/getchat/${s._id}`}>
-        //                          <BsInfoCircle  className='' /> 
-        //                      </Link>
-        //                         <Link to={`/chat/delete/${s._id}`}>
-        //                          <MdOutlineDelete className='' /> 
-        //                      </Link>
-        //                  </div>
-        //              </td>
-        //          </tr>
-        //          ))}
-        //  </tbody>
-        //  </div>
-        //  </table>
-
-    )
-}
+    )}
         </div >
     )
 }
