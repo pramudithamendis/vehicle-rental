@@ -9,23 +9,73 @@ import { useLocation } from 'react-router-dom'
 
 const Create = () => {
   const [title, setTitle] = useState('');
-  const [vehicle, setV] = useState('');
+  const [vehiclenumber, setV] = useState('');
   const [issue, setI] = useState('');
 
   const [loading, setL] = useState(false);
   const navigate = useNavigate();
 
-  const location = useLocation()
-  const { user } = location.state
+  const [user, setU] = useState(localStorage.getItem('user'));
+  const [vehicleisthere, setSuccessofVehicle] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const CreateF = () => {
+  const CreateF0 = () => {
+    
+    CreateF1()
+
+
+  }
+
+  const CreateF1 = () => {
+
+
+              const dataOfVehicle = {
+                    vehiclenumber
+                          
+                  }
+
+                axios.post('http://localhost:5555/vehicle/validateVehicle',dataOfVehicle)
+                  .then((response)=>{
+                      console.log(response);
+                      if(response.data.success === "Vehicle number is valid"){
+                          console.log(response.data.success)
+                          setSuccessofVehicle(true)
+                           CreateF2()
+                          
+                      }
+                      else{
+                        setErrorMessage(response.data)
+                      }
+                  })
+                  .catch((error)=>{
+                      // setL(false);
+                  })
+
+                  
+
+    
+  }
+
+
+  // const CreateF3 = () => {
+
+  //   console.log("CreateF3 executed")
+  // }
+  const CreateF2 = () => {
+    console.log("createf2 executed")
     const data = {
       title,
-      vehicle,
-      issue
+      vehiclenumber,
+      issue,
+      user
     };
     setL(true);
-    axios.post('http://localhost:5555/chat/create', data)
+    axios.post('http://localhost:5555/chat/create', {
+    "title": title,
+    "vehicle": vehiclenumber,
+    "issue": issue,
+    "user": user    
+    })
       .then((response) => {
         console.log(response);
         navigate('/chat/chats');
@@ -50,8 +100,8 @@ const Create = () => {
           />
           <input
             className='Create_parent_middlepanel_vehicle'
-            type='text' placeholder='Vehicle type'
-            value={vehicle}
+            type='text' placeholder='Vehicle number'
+            value={vehiclenumber}
             onChange={(e) => { setV(e.target.value); }
             }
           />
@@ -62,8 +112,11 @@ const Create = () => {
             onChange={(e) => { setI(e.target.value); }
             }
           />
-           <button className='Create_parent_middlepanel_button' onClick={CreateF}
+           <button className='Create_parent_middlepanel_button' onClick={CreateF0}
       >Save</button>
+      <div>
+          {errorMessage}
+        </div>
         
       </div>
 

@@ -17,23 +17,18 @@ const AChatForAdmin = () => {
   const [r, setR] = useState({});
   const { id } = useParams();
   const [replyloading, setReply] = useState(true)
-  
   useEffect(() => {
     setL(true);
-    
     axios.get(`http://localhost:5555/chat/getchat/${id}/reply`)
       .then((response) => {
         // console.log(response);
-        
         setR(response.data);
         setL(false)
         // setReply(false)
         setReply(false)
-        
       })
       .catch((error) => {
         console.log(error);
-        
         setL(false);
         setReply(true)
       })
@@ -60,10 +55,10 @@ const AChatForAdmin = () => {
 
       <div className="AChat_parent_rightpanel">
         <div className="AChat_parent_rightpanel_replybutton">
-          
-      <Link to={`/chat/create/admin/${s._id}`}>
-                              Reply
-                                </Link>
+
+          <Link to={`/chat/create/admin/${s._id}`}>
+            Reply
+          </Link>
         </div>
       </div>
       <div className='AChat_parent_middlepanel'>
@@ -71,23 +66,26 @@ const AChatForAdmin = () => {
         <div className='AChat_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div><hr className='AChat_parent_middlepanel_vehicle_hr' />
         <div className='AChat_parent_middlepanel_issue'>Issue: {s.issue}</div>
         <div className='AChat_parent_middlepanel_operations'>
-        
         </div>
 
 
       </div>
       {/* <div className='rightpanel phonescreen'>Side</div> */}
+     
       {replyloading ? (<Spinner />) : (
-      <div className='AChat_parent_right_panel'>
-        <div className="AChat_parent_right_panel_title">
-        {r.title}<br/>
-        </div>
+        <div>
+          {/* {r.length} */}
+          <div>
+            {r.map(function (r, i) {
+              return <div>
+                {r.title}
+              </div>;
+            })}
+          </div>
         </div>
       )
       }
-      
     </div>
-    
 
 
   )

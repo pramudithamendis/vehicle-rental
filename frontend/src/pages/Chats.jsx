@@ -15,19 +15,35 @@ const Chats = () => {
     const [chats, setS] = useState([]);
     const [loading, setL] = useState(false)
     
-    const location = useLocation();
+    const [user, setU] = useState(localStorage.getItem('user'));
+
+    const [chatsloading, setChats] = useState(true)
+
 
     useEffect(() => {
         setL(true);
-        axios.get('http://localhost:5555/chat/chats')
+
+        axios.get(`http://localhost:5555/chat/chats/${user}`)
             .then((response) => {
                 setS(response.data);
-                console.log(response);
+                
                 setL(false)
+                
+                if(response.data[0].title =="hi"){
+                    setChats(true)    
+                }
+                else{
+                    setChats(false)   
+                    
+                }
+                
+                
             })
             .catch((error) => {
                 console.log(error);
-                setL(false);
+                setL(true);
+                setChats(false)
+                
             })
     }, [])
     return (
@@ -36,8 +52,8 @@ const Chats = () => {
 
                 
                 <div className='Chats_parent'>
-                    <div>Hi user {location.state.name}<br/></div>    
-                    <Link className='edit' to={`/chat/create`} state={{ user: location.state.name }}>
+                    <div>Hi user {user}!<br/></div>    
+                    <Link className='edit' to={`/chat/create`} >
                     <div className='Chats_parent_leftpanel phonescreen'>
                         <div>
                             <AiOutlineEdit className='' />
@@ -46,18 +62,17 @@ const Chats = () => {
                         <div>Create</div>
                         
                     </div>
-                </Link>
-                
-                    {chats.map((s, index) => (
-                    <div className='Chats_parent_middlepanel' key={s._id}>
+                    </Link>
+                {chatsloading ? (<div></div>) : (
+                <div>
+                {chats.map(function(s, index){
+                return <div className='Chats_parent_middlepanel' key={s._id}>
                         <>
                             <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
-                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
+                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle Number: {s.vehicle}</div>
 
                             <div className='Chats_parent_middlepanel_Operations'>
-                                <Link className='edit' to={`/chat/edit/${s._id}`}>
-                                    <AiOutlineEdit className='' />
-                                </Link>
+                                
                                 <Link className='info' to={`/chat/getchat/${s._id}`}>
                                     <BsInfoCircle className='' />
                                 </Link>
@@ -68,67 +83,17 @@ const Chats = () => {
                             </div>
                         </>
                     </div>
-                ))}
-            {/* <div className='rightpanel phonescreen'>Side</div> */}
+               
+                })}
+      </div>
+                
+                )}
+                  
         </div>
 
 
 
-        //     <table >
-
-
-
-        //         <tr>
-        //           <th className='thead'>No</th>
-        //           <th className='thead'>Title</th>
-        //           <th className='thead'>Vehicle</th>
-        //           <th className='thead'>issue</th>
-
-        //           <th className=''>Operations</th>
-        //           <th className=''><Link to={'/chat/create'}>Create</Link></th>
-        //         </tr>
-
-
-
-
-        //     <div className="tbody">
-        //      <tbody>
-        //      {chats.map((s, index) => (
-        //          <tr key={s._id} className='h-8'>
-        //              <td className=''>
-        //                  {index + 1}
-        //              </td>
-        //              <td className=''>
-        //                  {s.title}
-        //              </td>
-        //              <td className=''>
-        //                  {s.vehicle}
-        //              </td>
-        //              <td className=''>
-        //                  {s.issue}
-        //              </td>
-
-        //              <td className=''>
-        //                  <div className=''>
-        //                  <Link to={`/chat/edit/${s._id}`}>
-        //                        <AiOutlineEdit className='' />
-        //                    </Link> 
-        //                  <Link to={`/chat/getchat/${s._id}`}>
-        //                          <BsInfoCircle  className='' /> 
-        //                      </Link>
-        //                         <Link to={`/chat/delete/${s._id}`}>
-        //                          <MdOutlineDelete className='' /> 
-        //                      </Link>
-        //                  </div>
-        //              </td>
-        //          </tr>
-        //          ))}
-        //  </tbody>
-        //  </div>
-        //  </table>
-
-    )
-}
+    )}
         </div >
     )
 }

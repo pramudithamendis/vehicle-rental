@@ -4,11 +4,12 @@ import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
 
 const ChatUserLogin = () => {
-    const [loading, setL] = useState(false)
-    const [idN, setidN] = useState();
+    // const [loading, setL] = useState(false)
+    const [idN, setidN] = useState('');
     const [password, setpassword] = useState('');
     const navigate = useNavigate();
 
+    const [errorMessage, setErrorMessage] = useState('')
     const LoginF = () => {
         // setL(true);
         
@@ -22,8 +23,12 @@ const ChatUserLogin = () => {
             console.log(response);
             if(response.data.success === "Success"){
                 
-                navigate('/chat/chats',{state:{id:1,name: response.data.user}})
+                navigate('/chat/chats')
+                localStorage.setItem('user', response.data.user);
                 
+            }
+            else{
+                setErrorMessage(response.data)
             }
         })
         .catch((error)=>{
@@ -53,6 +58,9 @@ const ChatUserLogin = () => {
 
         <button className='p-2 bg-sky-300 m-' onClick={LoginF}
         >Save</button>
+        <div>
+          {errorMessage}
+        </div>
     </div>
   )
 }
