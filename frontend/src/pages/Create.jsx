@@ -15,8 +15,8 @@ const Create = () => {
   const [loading, setL] = useState(false);
   const navigate = useNavigate();
 
-  const location = useLocation()
-  const { user } = location.state
+  const [user, setU] = useState(localStorage.getItem('user'));
+  
 
   const CreateF = () => {
     const data = {

@@ -22,7 +22,8 @@ const ChatUserLogin = () => {
             console.log(response);
             if(response.data.success === "Success"){
                 
-                navigate('/chat/chats',{state:{id:1,name: response.data.user}})
+                navigate('/chat/chats')
+                localStorage.setItem('user', response.data.user);
                 
             }
         })

@@ -15,10 +15,11 @@ const Chats = () => {
     const [chats, setS] = useState([]);
     const [loading, setL] = useState(false)
     
-    const location = useLocation();
+    const [user, setU] = useState(localStorage.getItem('user'));
 
     useEffect(() => {
         setL(true);
+        
         axios.get('http://localhost:5555/chat/chats')
             .then((response) => {
                 setS(response.data);
@@ -36,8 +37,8 @@ const Chats = () => {
 
                 
                 <div className='Chats_parent'>
-                    <div>Hi user {location.state.name}<br/></div>    
-                    <Link className='edit' to={`/chat/create`} state={{ user: location.state.name }}>
+                    <div>Hi user {user}!<br/></div>    
+                    <Link className='edit' to={`/chat/create`} >
                     <div className='Chats_parent_leftpanel phonescreen'>
                         <div>
                             <AiOutlineEdit className='' />
