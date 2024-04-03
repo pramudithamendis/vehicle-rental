@@ -24,6 +24,24 @@ router.post('/create', async (request,response)=>{
     }
 })
 
+router.post('/login', async (request,response)=>{
+    const {email, password} = request.body;
+
+    adminModel.findOne({email: email})
+    .then(user => {
+        if(user){
+            if(user.password === password){
+                response.json({success: "Success", user: user.email})
+                
+            }else{
+                response.json("Incorrect login details")
+            }
+        }else{
+            response.json("No record existed")
+        }
+    })
+
+})
 
 
 export default router;

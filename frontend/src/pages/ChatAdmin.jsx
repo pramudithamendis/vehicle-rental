@@ -20,7 +20,7 @@ const ChatAdmin = () => {
 	    axios.post('http://localhost:5555/admin/create',data)
         .then((response)=>{
             console.log(response);
-            navigate('/admin/create');
+            navigate('/home/admin');
         })
         .catch((error)=>{
             // setL(false);
