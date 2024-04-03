@@ -92,7 +92,6 @@ const Chats = () => {
                                         <div className='Chats_parent_middlepanel_vehicle'>Vehicle Number: {s.vehicle}</div>
 
                                         <div className='Chats_parent_middlepanel_Operations'>
-                                            <br/>
                                             {/* <Link className='info' to={`/chat/getchat/${s._id}`}>
                                                 <BsInfoCircle className='' />
                                             </Link> */}
