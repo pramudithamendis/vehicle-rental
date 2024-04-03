@@ -79,7 +79,7 @@ router.get('/chats/:user', async (request,response)=>{
                     }
                 as2.push(as)
             }
-            console.log(as2)
+            // console.log(as2)
         }else{
             
             as2.push(
@@ -96,7 +96,7 @@ router.get('/chats/:user', async (request,response)=>{
                 }
                 
             )
-            console.log(as2)
+            // console.log(as2)
         }
     
 

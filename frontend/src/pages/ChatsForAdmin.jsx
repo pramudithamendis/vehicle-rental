@@ -7,63 +7,69 @@ import { Link } from 'react-router-dom'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsInfoCircle } from 'react-icons/bs'
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
-import './Chats.css'
-
+import './ChatsForAdmin.css'
+import { useNavigate } from 'react-router-dom'
 
 const ChatsForAdmin = () => {
     const [chats, setS] = useState([]);
     const [loading, setL] = useState(false)
+    const [admin, setA] = useState(localStorage.getItem('admin'));
+    const navigate = useNavigate();
 
-    useEffect(()=>{
+    useEffect(() => {
         setL(true);
         axios.get('http://localhost:5555/chat/chats')
-        .then((response)=>{
-            setS(response.data);
-            console.log(response);
-            setL(false)
-        }).catch((error) => {
-            console.log(error);
-            setL(false);
-        })
+            .then((response) => {
+                setS(response.data);
+                console.log(response);
+                setL(false)
+            }).catch((error) => {
+                console.log(error);
+                setL(false);
+            })
 
     }, [])
 
     return (
         <div>
-        {loading ? (<Spinner />) : (
-
-            
             <div className='Chats_parent'>
-                
-            
-                {chats.map((s, index) => (
-                <div className='Chats_parent_middlepanel' key={s._id}>
-                    <>
-                        <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
-                        <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
-
-                        <div className='Chats_parent_middlepanel_Operations'>
-                            
-                            <Link className='info' to={`/chat/getchat/${s._id}/admin`}>
-                                <BsInfoCircle className='' />
-                            </Link>
-                            
-
-                        </div>
-                    </>
-                </div>
-            ))}
-        {/* <div className='rightpanel phonescreen'>Side</div> */}
-    </div>
+                <div>Hi {admin}</div>
+            </div>
+            <div>
+                {loading ? (<Spinner />) : (
 
 
+                    <div className='Chats_parent'>
+                        <div></div>
 
-   
+                        {chats.map((s, index) => (
+                            <div className='Chat' key={s._id} 
+                            onClick={() => {
+                                navigate(`/chat/getchat/${s._id}/admin`)
+                            }}>
+                                <>
+                                    <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
+                                    <div className='Chats_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div>
 
-)
-}
-    </div >
-  )
+                                    <div className='Chats_parent_middlepanel_Operations'>
+
+                                       
+
+                                    </div>
+                                </>
+                            </div>
+                        ))}
+                        {/* <div className='rightpanel phonescreen'>Side</div> */}
+                    </div>
+
+
+
+
+
+                )}
+            </div>
+        </div >
+    )
 }
 
 export default ChatsForAdmin

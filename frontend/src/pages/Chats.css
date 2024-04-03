@@ -2,18 +2,16 @@ body{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(120,120,219,1) 100%);
 }
-.Chats_parent{
+.Chats_parent {
     /* background-color: blue; */
     
     display: flex;
     justify-content: center;
     margin-top: 20px;
     flex-wrap: wrap;
-    align-items: flex-start;
-    
-    
+    align-items: center;    
 }
-.Chats_parent_leftpanel{
+.CreateButton{
     background-color: white;
     color: black;
     width: 300px;
@@ -30,11 +28,23 @@ body{
     
     
 }
+.Chats_parent2 div{
+    /* background-color: blue; */
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    
+    
+}
 
-.Chats_parent_middlepanel{
+
+.Chat{
     
     /* flex-grow: 1; */
-    border-radius: 20px;
+    border-radius: 10px;
     height: 150px;
     width: 300px;
     margin-bottom: 10px;
@@ -42,9 +52,16 @@ body{
     margin-left: 10px;
     border: 1px solid white;
     box-shadow: 10px 10px;
+    background-color: orange;
     -webkit-box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);    
+}
+
+.Chat:hover{
+    cursor: pointer;
+    background-color: rgb(180, 123, 18);
+
 }
 
 
