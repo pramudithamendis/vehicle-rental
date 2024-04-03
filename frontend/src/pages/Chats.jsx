@@ -7,17 +7,19 @@ import { Link } from 'react-router-dom'
 import { AiOutlineEdit } from 'react-icons/ai'
 import { BsInfoCircle } from 'react-icons/bs'
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
-import {useLocation} from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import './Chats.css'
+import { useNavigate } from 'react-router-dom'
 
 
 const Chats = () => {
     const [chats, setS] = useState([]);
     const [loading, setL] = useState(false)
-    
+
     const [user, setU] = useState(localStorage.getItem('user'));
 
     const [chatsloading, setChats] = useState(true)
+    const navigate = useNavigate();
 
     useEffect(() => {
         setL(true);
@@ -25,74 +27,89 @@ const Chats = () => {
         axios.get(`http://localhost:5555/chat/chats/${user}`)
             .then((response) => {
                 setS(response.data);
-                
+
                 setL(false)
-                
-                if(response.data[0].title =="hi"){
-                    setChats(true)    
+
+                if (response.data[0].title == "hi") {
+                    setChats(true)
                 }
-                else{
-                    setChats(false)   
-                    
+                else {
+                    setChats(false)
+
                 }
-                
-                
+
+
             })
             .catch((error) => {
                 console.log(error);
                 setL(true);
                 setChats(false)
-                
+
             })
     }, [])
     return (
         <div>
-            {loading ? (<Spinner />) : (
-
-                
+            <div>
                 <div className='Chats_parent'>
-                    <div>Hi user {user}!<br/></div>    
-                    <Link className='edit' to={`/chat/create`} >
-                    <div className='Chats_parent_leftpanel phonescreen'>
-                        <div>
-                            <AiOutlineEdit className='' />
+                <div>Hi {user}!<br /></div>
+                </div>
+            </div>
+            <div>
+                {loading ? (<Spinner />) : (
+
+
+                    <div className='Chats_parent'>
+
+
+
+                        <div className='CreateButton' onClick={() => {
+                            navigate(`/chat/create`)
+                        }}>
+
+                            Create
 
                         </div>
-                        <div>Create</div>
-                        
-                    </div>
-                    </Link>
-                {chatsloading ? (<div></div>) : (
-                <div>
-                {chats.map(function(s, index){
-                return <div className='Chats_parent_middlepanel' key={s._id}>
-                        <>
-                            <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
-                            <div className='Chats_parent_middlepanel_vehicle'>Vehicle Number: {s.vehicle}</div>
 
-                            <div className='Chats_parent_middlepanel_Operations'>
-                                
-                                <Link className='info' to={`/chat/getchat/${s._id}`}>
-                                    <BsInfoCircle className='' />
-                                </Link>
-                                <Link className='delete' to={`/chat/delete/${s._id}`}>
-                                    <MdOutlineDelete className='' />
-                                </Link>
 
-                            </div>
-                        </>
+
                     </div>
-               
-                })}
-      </div>
-                
+
+
+
                 )}
-                  
-        </div>
+            </div>
+            <div>
+                <div className='Chats_parent2'>
+                    {chatsloading ? (<div></div>) : (
+                        <div >
+                            {chats.map(function (s, index) {
+                                return <>
+                                    <div className='Chat' key={s._id}
+                                        onClick={() => {
+                                            navigate(`/chat/getchat/${s._id}`)
+                                        }}>
+                                        <div className='Chats_parent_middlepanel_title'>Title: {s.title}</div>
+                                        <div className='Chats_parent_middlepanel_vehicle'>Vehicle Number: {s.vehicle}</div>
 
+                                        <div className='Chats_parent_middlepanel_Operations'>
+                                            <br/>
+                                            {/* <Link className='info' to={`/chat/getchat/${s._id}`}>
+                                                <BsInfoCircle className='' />
+                                            </Link> */}
+                                            <Link className='delete' to={`/chat/delete/${s._id}`}>
+                                                <MdOutlineDelete className='' />
+                                            </Link>
 
+                                        </div>
 
-    )}
+                                    </div>
+                                </>
+                            })}
+                        </div>
+
+                    )}
+                </div>
+            </div>
         </div >
     )
 }
