@@ -12,6 +12,7 @@ import ChatUser from './pages/ChatUser.jsx'
 import Home from './pages/Home.jsx'
 import ChatUserLogin from './pages/ChatUserLogin.jsx'
 import CreateVehicle from './pages/CreateVehicle.jsx'
+import ChatAdmin from './pages/ChatAdmin.jsx'
 
 const App = () => {
   return (
@@ -28,6 +29,8 @@ const App = () => {
       <Route path='/user/create' element={<ChatUser />} /> {/* this has the signup form */} 
       <Route path='/user/signin' element={<ChatUserLogin />} /> {/* this has the sign in form */} 
       <Route path='/vehicle/vehiclecreate' element={<CreateVehicle />}/> {/* this has the form to create a vehicle */} 
+      <Route path='/admin/create' element={<ChatAdmin />}/> 
+
     </Routes>
   )
 }

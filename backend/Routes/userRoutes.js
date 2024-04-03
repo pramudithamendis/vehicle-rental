@@ -11,11 +11,13 @@ router.post('/create', async (request,response)=>{
         ){
             return response.status(400).send('Send all the required fields');
         }
-
+        
         const newUser ={
             idN: request.body.idN,
             password: request.body.password
         }
+
+        
         const newUserFinal = await userModel.create(newUser);
         return response.status(201).send(newUserFinal);
     } catch (error) {

@@ -19,7 +19,6 @@ const Chats = () => {
 
     const [chatsloading, setChats] = useState(true)
 
-
     useEffect(() => {
         setL(true);
 
