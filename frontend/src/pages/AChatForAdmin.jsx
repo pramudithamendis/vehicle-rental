@@ -49,8 +49,8 @@ const AChatForAdmin = () => {
   }, [])
   return (
     <div className='AChat_parent'>
-      <div className='AChat_parent_leftpanel phonescreen'><Link to={`/chat/chats/admin`}>
-                              Home
+      <div className='AChat_leftpanel phonescreen'><Link to={`/chat/chats/admin`}>
+                              Chats
                                 </Link></div>
 
       <div className="AChat_parent_rightpanel">

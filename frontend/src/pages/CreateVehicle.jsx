@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
-import './Create.css'
 import BackButton from '../components/BackButton'
 import { useLocation } from 'react-router-dom'
 
@@ -37,7 +36,7 @@ const CreateVehicle = () => {
 
   return (
     <div className='Create_parent'>
-      <div className='Create_parent_leftpanel phonescreen'><BackButton /></div>
+      {/* <div className='Create_parent_leftpanel phonescreen'><BackButton /></div> */}
       <div className="Create_parent_middlepanel">
         
         <div>{user}</div>

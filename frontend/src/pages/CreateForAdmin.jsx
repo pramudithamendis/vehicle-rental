@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Spinner from '../components/Spinner'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import './Create.css'
 import BackButton from '../components/BackButton'
 
@@ -32,7 +32,7 @@ const CreateForAdmin = () => {
 
   return (
     <div className='Create_parent'>
-      <div className='Create_parent_leftpanel phonescreen'><BackButton /></div>
+      <div className='Create_parent_leftpanel phonescreen'><Link to='/chat/chats/admin'>Chats</Link></div>
       <div className="Create_parent_middlepanel">
         
 

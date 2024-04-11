@@ -8,8 +8,9 @@ import { AiOutlineEdit } from 'react-icons/ai'
 import { BsInfoCircle } from 'react-icons/bs'
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md'
 import { useLocation } from 'react-router-dom';
-import './Chats.css'
+
 import { useNavigate } from 'react-router-dom'
+import './Chats.css'
 
 
 const Chats = () => {

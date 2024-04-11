@@ -1,15 +1,17 @@
+body{
+    background: red;
+}
+
 .Create_parent{
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
     margin-top: 10px;
-    margin-left: 10px;
-    
-    
+    margin-left: 10px;    
 }
 .Create_parent_leftpanel{
-    background-color: greenyellow;
+    background-color: #FF8A00;
     width: 300px;
     border-radius: 20px;
     height: 50px;
@@ -22,7 +24,7 @@
     display: flex;
     flex-direction: column;
     width: 350px;
-    background-color: none;
+    background-color: #FF8A00;
     border: 1px solid white;
     padding: 10px;
     justify-content: center;

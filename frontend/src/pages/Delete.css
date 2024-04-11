@@ -9,7 +9,7 @@
     
 }
 .Delete_parent_leftpanel{
-    background-color: greenyellow;
+    background-color: #FF8A00;
     width: 300px;
     border-radius: 20px;
     height: 50px;
@@ -19,6 +19,8 @@
 }
 
 .Delete_parent_middlepanel{
+    background: #FF8A00;
+    border: 1px solid white;
     display: flex;
     flex-direction: column;
     width: 350px;

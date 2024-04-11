@@ -65,7 +65,7 @@ const AChat = () => {
 
   return (
     <div className='AChat_parent'>
-      <div className='AChat_parent_leftpanel phonescreen'><BackButton /></div>
+      <div className='AChat_leftpanel'><BackButton /></div>
       <div className='AChat_parent_middlepanel'>
         <div className='AChat_parent_middlepanel_title'>Title: {s.title}</div><hr className='AChat_parent_middlepanel_title_hr' />
         <div className='AChat_parent_middlepanel_vehicle'>Vehicle type: {s.vehicle}</div><hr className='AChat_parent_middlepanel_vehicle_hr' />
