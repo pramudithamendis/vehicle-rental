@@ -1,7 +1,7 @@
-body{
-    background: rgb(2,0,36);
-    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(120,120,219,1) 100%);
-}
+/* body{
+    background: white;
+    color: white;
+} */
 .Chats_parent {
     /* background-color: blue; */
     
@@ -28,6 +28,11 @@ body{
     
     
 }
+
+.CreateButton:hover{
+    cursor: pointer;
+    background-color: #FF8A00;
+}
 .Chats_parent2 div{
     /* background-color: blue; */
     
@@ -52,7 +57,7 @@ body{
     margin-left: 10px;
     border: 1px solid white;
     box-shadow: 10px 10px;
-    background-color: orange;
+    background-color: #FF8A00;
     -webkit-box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);
 box-shadow: 10px 10px 21px 0px rgba(0,0,0,0.75);    

@@ -2,6 +2,8 @@ import React, { useState} from 'react'
 import axios from 'axios'
 import Spinner from '../components/Spinner'
 import { useNavigate } from 'react-router-dom'
+import './ChatUser.css'
+import { Link } from 'react-router-dom'
 
 const ChatUser = () => {
     const [loading, setL] = useState(false)
@@ -30,25 +32,27 @@ const ChatUser = () => {
     }
 
   return (
-    <div>Create
-        
-        <div >
+    <div className='ChatUser_parent'>
+        <div className='Create_parent_leftpanel phonescreen'><Link to='/home' >Home</Link></div>
+        <div className='Signup'>
          
          <input 
            type='text'
+           placeholder='Enter your ID number'
            value={idN} 
            onChange={(e)=> {setidN(e.target.value);}}
-         /><br/><br/>
+         />
          <input 
            type='text'
+           placeholder='Enter your password'
            value={password} 
            onChange={(e)=> {setpassword(e.target.value);}}
          />
-
-       </div>
-
         <button className='p-2 bg-sky-300 m-' onClick={CreateF}
         >Save</button>
+       </div>
+
+        
     </div>
   )
 }

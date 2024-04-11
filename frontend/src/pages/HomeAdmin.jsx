@@ -1,10 +1,11 @@
 import React from 'react'
-
+import './HomeAdmin.css'
 const HomeAdmin = () => {
   return (
-    <div>HomeAdmin<br></br>
-        <a href='/admin/create'>Sign up for admin</a><br></br>
-    <a href='/admin/signin'>Sign In for admin</a>
+    <div className='HomeAdmin_parent'>
+      
+        <a className='HomeAdminSignUp' href='/admin/create'>Sign up for admin</a>
+    <a className='HomeAdminSignIn' href='/admin/signin'>Sign In for admin</a>
     </div>
     
   )

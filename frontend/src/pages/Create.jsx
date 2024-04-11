@@ -90,7 +90,7 @@ const Create = () => {
       <div className='Create_parent_leftpanel phonescreen'><BackButton /></div>
       <div className="Create_parent_middlepanel">
         
-        <div>{user}</div>
+        {/* <div>{user}</div> */}
           <input
             className='Create_parent_middlepanel_title'
             type='text' placeholder='Title of the issue'

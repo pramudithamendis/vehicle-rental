@@ -5,7 +5,7 @@ const BackButton = () => {
   return (
     <div>
         <Link to={`/chat/chats`}>
-                              Home
+                              My Chats
                                 </Link>
     </div>
   )
